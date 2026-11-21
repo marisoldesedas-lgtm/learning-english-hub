@@ -1,0 +1,1033 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Mastery Hub | Learning English Project</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf4f0',
+                            100: '#fbe8e1',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            900: '#7c2d12',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-hero {
+            background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #f59e0b 100%);
+        }
+    </style>
+</head>
+<body class="bg-amber-50/30 text-slate-800 antialiased selection:bg-brand-500 selection:text-white" onload="loadChecklistState()">
+
+    <!-- Top Assignment Banner -->
+    <div class="bg-slate-900 text-slate-200 text-xs sm:text-sm py-2.5 px-4 sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <span class="bg-brand-500 text-white font-bold px-2 py-0.5 rounded text-xs uppercase tracking-wider">Assignment Portal</span>
+                <span class="font-medium">Instructor: <strong class="text-white">Amada Avila</strong></span>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+                <span class="flex items-center gap-1"><i class="fa-regular fa-calendar-days text-brand-400"></i> Due: Nov 21</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-award text-amber-400"></i> 100 Points</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-users text-emerald-400"></i> Teamwork (3-4)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-[41px] sm:top-[45px] z-40 border-b border-slate-200 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-amber-500 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    EM
+                </div>
+                <div>
+                    <span class="text-lg font-bold bg-gradient-to-r from-brand-600 to-amber-600 bg-clip-text text-transparent">English Mastery Hub</span>
+                    <span class="hidden sm:block text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Student Learning Project</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-5 text-sm font-medium text-slate-600">
+                <a href="#hero" class="hover:text-brand-600 transition">Home</a>
+                <a href="#pronunciation" class="hover:text-brand-600 transition">Pronunciation</a>
+                <a href="#grammar" class="hover:text-brand-600 transition">Grammar</a>
+                <a href="#listening" class="hover:text-brand-600 transition">Listening</a>
+                <a href="#practice" class="hover:text-brand-600 transition">Practice Hub</a>
+                <a href="#checklist" class="hover:text-brand-600 transition flex items-center gap-1 text-brand-600 font-semibold">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Roadmap</span>
+                </a>
+                <a href="#team" class="hover:text-brand-600 transition">Team</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="openModal('quizModal')" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-sm hover:shadow transition flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Quick Quiz</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 hover:text-slate-900 p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-brand-600 font-medium py-1">Home</a>
+            <a href="#pronunciation" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-brand-600 font-medium py-1">Pronunciation</a>
+            <a href="#grammar" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-brand-600 font-medium py-1">Grammar</a>
+            <a href="#listening" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-brand-600 font-medium py-1">Listening</a>
+            <a href="#practice" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-brand-600 font-medium py-1">Practice Hub</a>
+            <a href="#checklist" onclick="toggleMobileMenu()" class="block text-brand-600 font-semibold py-1">Project Roadmap</a>
+            <a href="#team" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-brand-600 font-medium py-1">Team Members</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="gradient-hero text-white py-20 lg:py-28 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-amber-200 border border-white/20">
+                    <i class="fa-solid fa-graduation-cap"></i> Amada Avila Class Assignment
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    Welcome to <span class="text-amber-200">English Mastery Hub</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-100 max-w-2xl mx-auto lg:mx-0 font-normal">
+                    A sample student web portal built for collaborative language learning. Featuring interactive lessons in pronunciation, grammar, listening drills, and a complete project checklist dashboard.
+                </p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                    <a href="#checklist" class="bg-white text-brand-700 hover:bg-amber-50 font-semibold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-brand-600"></i>
+                        <span>View Project Roadmap</span>
+                    </a>
+                    <a href="#practice" class="bg-brand-900/40 hover:bg-brand-900/60 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/20 backdrop-blur-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad text-amber-300"></i>
+                        <span>Interactive Practice</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5">
+                <div class="bg-white/10 backdrop-blur-xl p-6 rounded-3xl border border-white/20 shadow-2xl space-y-6">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                        </div>
+                        <span class="text-xs font-mono text-amber-200">englishmastery.edu.pa</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white/10 p-4 rounded-2xl flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-300 text-xl font-bold">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Pronunciation Mastery</h4>
+                                <p class="text-xs text-slate-200">Phonetics, intonation & audio guides</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-2xl flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-300 text-xl font-bold">
+                                <i class="fa-solid fa-book-bookmark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Grammar & Writing</h4>
+                                <p class="text-xs text-slate-200">Sentence structure & essay templates</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-2xl flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center text-yellow-300 text-xl font-bold">
+                                <i class="fa-solid fa-headphones"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Listening Comprehension</h4>
+                                <p class="text-xs text-slate-200">Dialogues, dictation & audio tests</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pronunciation Section -->
+    <section id="pronunciation" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-50 px-3 py-1 rounded-full">Section 01</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Pronunciation & Video Lesson</h2>
+            <p class="text-slate-600">
+                Master English phonetics with instructional video guides created by our student team. Practice tongue placement and vowel sounds.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <div class="lg:col-span-7">
+                <div class="relative rounded-2xl overflow-hidden shadow-xl bg-slate-900 aspect-video flex items-center justify-center group border border-slate-800">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900 via-orange-950 to-amber-900 opacity-90"></div>
+                    <div class="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+                        <div onclick="playVideoMock('Pronunciation')" class="w-20 h-20 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-3xl cursor-pointer transition transform hover:scale-105 shadow-xl">
+                            <i class="fa-solid fa-play ml-1"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mt-6 text-white drop-shadow">Mastering English Vowels & Consonant Clusters</h3>
+                        <p class="text-sm text-amber-200 mt-1">Presented by Team Member #1 (Pronunciation Lead)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-wider bg-brand-100 text-brand-700 px-3 py-1 rounded-md">Video Lesson #1</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Pronunciation Fundamentals</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Learn precise articulation techniques for difficult sounds, word stress in multi-syllable terms, and natural sentence intonation.
+                    </p>
+                </div>
+
+                <div class="space-y-2 text-sm text-slate-700">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-600"></i> Minimal pairs practice (ship vs. sheep)</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-600"></i> Connected speech rules (linking words)</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-600"></i> Interactive repeat-after-me audio drills</div>
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button onclick="openModal('transcriptModal')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-4 py-2.5 rounded-xl text-sm transition flex items-center gap-2">
+                        <i class="fa-solid fa-file-lines text-brand-600"></i>
+                        <span>Transcript</span>
+                    </button>
+                    <button onclick="shareLink()" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <span>Share Lesson</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grammar Section -->
+    <section id="grammar" class="bg-white py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-50 px-3 py-1 rounded-full">Section 02</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Grammar & Writing Guides</h2>
+                <p class="text-slate-600">
+                    Enrich your writing proficiency with clear structural guides, verb tense charts, and professional composition tips.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">Advanced Verb Tenses</h3>
+                    <p class="text-sm text-slate-600">
+                        Master Past Perfect Continuous, Future Perfect, and conditional clause structures for advanced fluency.
+                    </p>
+                    <button onclick="openModal('grammarModal')" class="text-brand-600 hover:text-brand-700 font-semibold text-sm flex items-center gap-1 pt-2">
+                        <span>Read full guide</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">Essay Structure</h3>
+                    <p class="text-sm text-slate-600">
+                        Learn how to write compelling thesis statements, body paragraphs with strong evidence, and impactful conclusions.
+                    </p>
+                    <button onclick="openModal('grammarModal')" class="text-brand-600 hover:text-brand-700 font-semibold text-sm flex items-center gap-1 pt-2">
+                        <span>Read full guide</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-100 text-yellow-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900">Phrasal Verbs & Idioms</h3>
+                    <p class="text-sm text-slate-600">
+                        Top 100 conversational idioms and phrasal verbs used by native speakers in everyday professional settings.
+                    </p>
+                    <button onclick="openModal('vocabModal')" class="text-brand-600 hover:text-brand-700 font-semibold text-sm flex items-center gap-1 pt-2">
+                        <span>Explore vocabulary</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listening Section -->
+    <section id="listening" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-50 px-3 py-1 rounded-full">Section 03</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Listening Comprehension Hub</h2>
+            <p class="text-slate-600">
+                Train your ear for natural speed conversations, reductions, and native speaker pacing.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-wider bg-brand-100 text-brand-700 px-3 py-1 rounded-md">Audio Lesson #2</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Native Dialogue Dictation</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Listen to real-world dialogues between native speakers. Practice identifying reduced forms like 'gonna', 'wanna', and 'hafta'.
+                    </p>
+                </div>
+
+                <div class="space-y-2 text-sm text-slate-700">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-600"></i> Audio speed control (0.75x to 1.25x)</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-600"></i> Interactive gap-fill dictation exercises</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-600"></i> Comprehension check questions</div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <div class="bg-slate-900 text-white rounded-2xl p-6 space-y-6 shadow-xl">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-podcast"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Episode #4: Ordering Coffee & Small Talk</h4>
+                                <span class="text-xs text-slate-400">Duration: 4:15 min • Native Speaker Audio</span>
+                            </div>
+                        </div>
+                        <span class="bg-emerald-500/20 text-emerald-400 text-xs px-2.5 py-1 rounded-full font-semibold">HD Audio</span>
+                    </div>
+
+                    <!-- Audio Player Simulation -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-xs text-slate-400 font-mono">
+                            <span id="audio-current-time">01:12</span>
+                            <span id="audio-total-time">04:15</span>
+                        </div>
+                        <!-- Progress bar -->
+                        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden cursor-pointer" onclick="seekAudio(event)">
+                            <div id="audio-progress" class="bg-brand-500 h-full w-[28%] transition-all"></div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="flex items-center gap-4">
+                                <button onclick="toggleAudioPlay()" id="audioPlayBtn" class="w-12 h-12 rounded-full bg-brand-600 hover:bg-brand-700 text-white flex items-center justify-center text-lg shadow-md transition">
+                                    <i id="audioPlayIcon" class="fa-solid fa-play ml-0.5"></i>
+                                </button>
+                                <button onclick="resetAudio()" class="text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-rotate-left"></i></button>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-semibold">1.0x Speed</span>
+                                <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-semibold"><i class="fa-solid fa-volume-high"></i> 80%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Hub & Interactive Quiz Section -->
+    <section id="practice" class="bg-white py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-200">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-50 px-3 py-1 rounded-full">Interactive Practice Hub</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Test Your English Skills</h2>
+                <p class="text-slate-600">
+                    Complete this interactive quiz to test grammar, vocabulary, and pronunciation rules. Get instant feedback and score points!
+                </p>
+            </div>
+
+            <div class="bg-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
+                <!-- Quiz Question Container -->
+                <div id="quiz-container" class="space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                        <span id="quiz-progress-indicator" class="text-xs font-bold uppercase tracking-wider text-brand-600">Question 1 of 3</span>
+                        <span id="quiz-score-indicator" class="text-xs font-semibold text-slate-500">Score: 0 / 3</span>
+                    </div>
+
+                    <h3 id="quiz-question-text" class="text-xl font-bold text-slate-900">
+                        1. Which option correctly completes the sentence: "If I _____ harder, I would have passed the exam."
+                    </h3>
+
+                    <div id="quiz-options-list" class="space-y-3">
+                        <button onclick="selectQuizOption(0)" class="quiz-opt w-full text-left p-4 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 font-medium text-slate-700 transition flex items-center justify-between">
+                            <span>A) study</span>
+                            <i class="fa-regular fa-circle text-slate-300"></i>
+                        </button>
+                        <button onclick="selectQuizOption(1)" class="quiz-opt w-full text-left p-4 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 font-medium text-slate-700 transition flex items-center justify-between">
+                            <span>B) had studied</span>
+                            <i class="fa-regular fa-circle text-slate-300"></i>
+                        </button>
+                        <button onclick="selectQuizOption(2)" class="quiz-opt w-full text-left p-4 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 font-medium text-slate-700 transition flex items-center justify-between">
+                            <span>C) would study</span>
+                            <i class="fa-regular fa-circle text-slate-300"></i>
+                        </button>
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden p-4 rounded-2xl text-sm font-medium"></div>
+
+                    <div class="flex justify-end pt-4">
+                        <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-sm">
+                            Next Question <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Roadmap & Checklist Section (11 Steps) -->
+    <section id="checklist" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-50 px-3 py-1 rounded-full">Project Dashboard & Roadmap</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">11 Assignment Steps Checklist</h2>
+            <p class="text-slate-600">
+                Track your student team's progress through all 11 core milestones required for the 100-point project assigned by Amada Avila (Due Nov 21). Your progress is automatically saved in browser local storage!
+            </p>
+            <div class="flex justify-center items-center gap-3 pt-2">
+                <span class="text-sm font-semibold text-slate-700">Team Progress:</span>
+                <span id="dashboard-progress-text" class="text-sm font-bold text-brand-600">0% (0/11 completed)</span>
+                <button onclick="resetChecklist()" class="text-xs text-slate-400 hover:text-red-500 underline ml-2">Reset</button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-200 h-3 rounded-full max-w-md mx-auto overflow-hidden">
+                <div id="dashboard-progress-bar" class="bg-brand-600 h-full w-0 transition-all duration-500"></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Step 1 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">01</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-0" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Choose Website Builder</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Select one reliable platform (WordPress, Wix, Squarespace, or HTML/Tailwind template like this portal).
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Ensure responsive design and team collaboration.</span>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">02</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-1" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Pick & Register Domain Name</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Choose a professional domain name reflecting your English learning theme (e.g., englishmastery.org).
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Keep it short, memorable, and relevant.</span>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">03</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-2" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Choose Web Hosting Plan</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Pick a hosting provider offering good uptime, SSL security certificates, and fast page loading speeds.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Free student tiers or reliable cloud hosting work great.</span>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">04</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-3" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Pick Your Template</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Select an education-focused template with clean typography, navigation bars, and embedded media support.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Look for clean layouts highlighting video and resources.</span>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">05</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-4" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Customize Template to Brand</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Adapt colors, fonts, logos, and taglines to reflect your team's unique brand identity and educational mission.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Consistent color palettes create a professional look.</span>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">06</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-5" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Build Your Site Structure</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Organize your pages into logical sections: Home, Pronunciation, Grammar, Listening, Practice Hub, and Team Credits.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Ensure intuitive navigation so users find materials easily.</span>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">07</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-6" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Include Instructional Videos</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Record and embed original videos where team members explain key topics (teaching pronunciation, writing, listening).
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Keep videos engaging with clear audio and visual aids.</span>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">08</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-7" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Add Useful Pages & Materials</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Enrich your website with downloadable PDFs, vocabulary flashcards, grammar charts, and interactive quizzes.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Quality material makes your site a valuable study reference.</span>
+                </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">09</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-8" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Create Engaging Content</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Write clear explanations, interactive examples, and call-to-actions to keep students motivated throughout their learning.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Use bullet points and bold text for readability.</span>
+                </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">10</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-9" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Test and Publish</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Test links on mobile and desktop, verify responsiveness, and publish your website online for team review.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Check all interactive elements and buttons.</span>
+                </div>
+            </div>
+
+            <!-- Step 11 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between md:col-span-2 lg:col-span-1">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 font-bold flex items-center justify-center text-base">11</span>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="step-10" onchange="saveChecklistState()" class="roadmap-checkbox w-5 h-5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs font-semibold text-slate-500">Done</span>
+                        </label>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Maintain and Promote</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Promote your website among classmates, share with Professor Amada Avila, and maintain updates before Nov 21.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 border border-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Tip: Final submission preparation!</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section id="team" class="bg-slate-100 py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-white px-3 py-1 rounded-full shadow-sm">Teamwork (3 or 4 Students)</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Meet Our Student Team</h2>
+                <p class="text-slate-600">
+                    Collaborative project creators dedicated to building an exceptional English learning web platform for Professor Amada Avila's course.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center space-y-4 group hover:shadow-md transition">
+                    <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-tr from-brand-600 to-amber-500 flex items-center justify-center text-white text-3xl font-bold shadow-md group-hover:scale-105 transition">
+                        CM
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900">Mayra Lee</h3>
+                        <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider mt-0.5">Project Lead & Developer</p>
+                    </div>
+                    <p class="text-xs text-slate-500">
+                        Responsible for site structure, web hosting configuration, and responsive Tailwind UI development.
+                    </p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center space-y-4 group hover:shadow-md transition">
+                    <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white text-3xl font-bold shadow-md group-hover:scale-105 transition">
+                        AR
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900">Rodney Rodríguez</h3>
+                        <p class="text-xs font-semibold text-orange-600 uppercase tracking-wider mt-0.5">Pronunciation Lead</p>
+                    </div>
+                    <p class="text-xs text-slate-500">
+                        Authored grammar articles, vocabulary guides, and recorded the pronunciation video lessons.
+                    </p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center space-y-4 group hover:shadow-md transition">
+                    <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-tr from-amber-600 to-yellow-500 flex items-center justify-center text-white text-3xl font-bold shadow-md group-hover:scale-105 transition">
+                        OT
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900">Omar Torrero</h3>
+                        <p class="text-xs font-semibold text-amber-600 uppercase tracking-wider mt-0.5">Writing & Resources Lead</p>
+                    </div>
+                    <p class="text-xs text-slate-500">
+                        Created downloadable study PDFs, essay writing templates, and listening comprehension drills.
+                    </p>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center space-y-4 group hover:shadow-md transition">
+                    <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-tr from-yellow-600 to-orange-500 flex items-center justify-center text-white text-3xl font-bold shadow-md group-hover:scale-105 transition">
+                        MS
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900">Marisol De Sedas</h3>
+                        <p class="text-xs font-semibold text-yellow-600 uppercase tracking-wider mt-0.5">Testing & Quality Lead</p>
+                    </div>
+                    <p class="text-xs text-slate-500">
+                        Tested website responsiveness, managed domain/hosting registration, and built interactive quizzes.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-amber-500 flex items-center justify-center text-white font-bold text-sm">
+                    EM
+                </div>
+                <span class="text-white font-bold text-lg">English Mastery Hub Project</span>
+            </div>
+            <div class="text-center md:text-right text-xs space-y-1">
+                <p>Course Assignment: Learning English (Instructor: Amada Avila)</p>
+                <p class="text-slate-500">&copy; 2026 Student Team Project. All rights reserved. Due November 21.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="genericModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <h3 id="modalTitle" class="text-xl font-bold text-slate-900">Resource Title</h3>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="modalBody" class="text-sm text-slate-600 space-y-4">
+                <!-- Dynamic Content -->
+            </div>
+            <div class="border-t border-slate-100 pt-4 flex justify-end">
+                <button onclick="closeModal()" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Checklist State Persistence with LocalStorage
+        function saveChecklistState() {
+            const checkboxes = document.querySelectorAll('.roadmap-checkbox');
+            const state = [];
+            checkboxes.forEach((cb, idx) => {
+                state.push(cb.checked);
+            });
+            localStorage.setItem('english_project_checklist', JSON.stringify(state));
+            updateChecklistUI();
+        }
+
+        function loadChecklistState() {
+            const saved = localStorage.getItem('english_project_checklist');
+            if(saved) {
+                const state = JSON.parse(saved);
+                state.forEach((val, idx) => {
+                    const cb = document.getElementById(`step-${idx}`);
+                    if(cb) cb.checked = val;
+                });
+            }
+            updateChecklistUI();
+        }
+
+        function resetChecklist() {
+            localStorage.removeItem('english_project_checklist');
+            const checkboxes = document.querySelectorAll('.roadmap-checkbox');
+            checkboxes.forEach(cb => cb.checked = false);
+            updateChecklistUI();
+        }
+
+        function updateChecklistUI() {
+            const checkboxes = document.querySelectorAll('.roadmap-checkbox');
+            let checkedCount = 0;
+            checkboxes.forEach(cb => {
+                if(cb.checked) checkedCount++;
+            });
+            const percent = Math.round((checkedCount / 11) * 100);
+            
+            document.getElementById('dashboard-progress-bar').style.width = percent + '%';
+            document.getElementById('dashboard-progress-text').innerText = `${percent}% (${checkedCount}/11 completed)`;
+        }
+
+        // Audio Player Simulation
+        let isAudioPlaying = false;
+        function toggleAudioPlay() {
+            isAudioPlaying = !isAudioPlaying;
+            const icon = document.getElementById('audioPlayIcon');
+            if(isAudioPlaying) {
+                icon.className = "fa-solid fa-pause";
+                showToast("Audio playback started (simulated stream).");
+            } else {
+                icon.className = "fa-solid fa-play ml-0.5";
+                showToast("Audio playback paused.");
+            }
+        }
+
+        function resetAudio() {
+            isAudioPlaying = false;
+            document.getElementById('audioPlayIcon').className = "fa-solid fa-play ml-0.5";
+            document.getElementById('audio-progress').style.width = "0%";
+            document.getElementById('audio-current-time').innerText = "00:00";
+            showToast("Audio reset to beginning.");
+        }
+
+        function seekAudio(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const pos = (e.clientX - rect.left) / rect.width;
+            document.getElementById('audio-progress').style.width = (pos * 100) + '%';
+            const currentSecs = Math.floor(pos * 255);
+            const mins = Math.floor(currentSecs / 60);
+            const secs = currentSecs % 60;
+            document.getElementById('audio-current-time').innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Interactive Quiz Engine
+        const quizQuestions = [
+            {
+                question: "1. Which option correctly completes the sentence: 'If I _____ harder, I would have passed the exam.'",
+                options: ["A) study", "B) had studied", "C) would study"],
+                correct: 1,
+                explanation: "Correct! This is a Third Conditional sentence expressing a hypothetical past condition: 'If I had studied harder, I would have passed.'"
+            },
+            {
+                question: "2. What does the phrasal verb 'look up' mean in academic research?",
+                options: ["A) To look toward the ceiling", "B) To search for information in a dictionary or database", "C) To watch over someone"],
+                correct: 1,
+                explanation: "Correct! 'Look up' means searching for a definition, fact, or word reference."
+            },
+            {
+                question: "3. Which sound represents the unvoiced dental fricative in English?",
+                options: ["A) /θ/ as in 'think'", "B) /ð/ as in 'this'", "C) /s/ as in 'sink'"],
+                correct: 0,
+                explanation: "Correct! /θ/ is the unvoiced 'th' sound produced with airflow between the teeth."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let selectedOptionIndex = null;
+
+        function selectQuizOption(index) {
+            selectedOptionIndex = index;
+            const options = document.querySelectorAll('.quiz-opt');
+            options.forEach((opt, idx) => {
+                if(idx === index) {
+                    opt.className = "quiz-opt w-full text-left p-4 rounded-2xl bg-brand-50 border-2 border-brand-500 font-semibold text-brand-900 transition flex items-center justify-between";
+                } else {
+                    opt.className = "quiz-opt w-full text-left p-4 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 font-medium text-slate-700 transition flex items-center justify-between";
+                }
+            });
+
+            // Auto-check answer
+            const q = quizQuestions[currentQuizIndex];
+            const feedbackEl = document.getElementById('quiz-feedback');
+            feedbackEl.classList.remove('hidden');
+
+            if(index === q.correct) {
+                quizScore++;
+                feedbackEl.className = "p-4 rounded-2xl text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-200";
+                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i> ${q.explanation}`;
+            } else {
+                feedbackEl.className = "p-4 rounded-2xl text-sm font-medium bg-red-50 text-red-800 border border-red-200";
+                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark text-red-600 mr-2"></i> Incorrect. The correct answer was option ${String.fromCharCode(65 + q.correct)}.`;
+            }
+
+            document.getElementById('quiz-score-indicator').innerText = `Score: ${quizScore} / ${quizQuestions.length}`;
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIndex++;
+            if(currentQuizIndex < quizQuestions.length) {
+                loadQuizQuestion();
+            } else {
+                showQuizResultsSummary();
+            }
+        }
+
+        function loadQuizQuestion() {
+            const q = quizQuestions[currentQuizIndex];
+            document.getElementById('quiz-progress-indicator').innerText = `Question ${currentQuizIndex + 1} of ${quizQuestions.length}`;
+            document.getElementById('quiz-question-text').innerText = q.question;
+            
+            const optionsList = document.getElementById('quiz-options-list');
+            optionsList.innerHTML = q.options.map((opt, idx) => `
+                <button onclick="selectQuizOption(${idx})" class="quiz-opt w-full text-left p-4 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 font-medium text-slate-700 transition flex items-center justify-between">
+                    <span>${opt}</span>
+                    <i class="fa-regular fa-circle text-slate-300"></i>
+                </button>
+            `).join('');
+
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+            selectedOptionIndex = null;
+        }
+
+        function showQuizResultsSummary() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = `
+                <div class="text-center space-y-4 py-6">
+                    <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-2xl mx-auto flex items-center justify-center text-3xl font-bold">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900">Quiz Completed!</h3>
+                    <p class="text-slate-600">You scored <strong class="text-brand-600">${quizScore} out of ${quizQuestions.length}</strong> correctly.</p>
+                    <button onclick="restartQuiz()" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-sm">
+                        Retake Quiz
+                    </button>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            // Re-render initial container structure if needed or reload
+            location.reload();
+        }
+
+        // Modals Registry
+        const modalContents = {
+            grammarModal: {
+                title: "Advanced Grammar Guide",
+                content: `
+                    <p class="font-semibold text-slate-800">Key Grammar Rules for English Learners:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Present Perfect:</strong> Used for past actions with ongoing relevance (e.g., <em>"We have learned English grammar."</em>).</li>
+                        <li><strong>Second Conditional:</strong> Hypothetical present/future situations (e.g., <em>"If we studied, we would excel."</em>).</li>
+                        <li><strong>Passive Voice:</strong> Focus on the receiver of the action (e.g., <em>"The website was created by our student team."</em>).</li>
+                    </ul>
+                `
+            },
+            vocabModal: {
+                title: "Essential Academic Vocabulary",
+                content: `
+                    <p class="font-semibold text-slate-800">Top Phrasal Verbs:</p>
+                    <div class="space-y-2">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Figure out:</strong> Understand or solve.</div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Turn out:</strong> Result in a specific way.</div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Look up:</strong> Search for data.</div>
+                    </div>
+                `
+            },
+            transcriptModal: {
+                title: "Video Lesson Transcript",
+                content: `
+                    <div class="space-y-3 text-xs text-slate-600 font-mono leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <p><strong>[00:00] Presenter:</strong> Welcome to English Mastery Hub pronunciation module. Today we review vowel sounds and consonant clusters.</p>
+                        <p><strong>[02:15] Presenter:</strong> Notice mouth shape differences between long 'ee' and short 'i' sounds.</p>
+                    </div>
+                `
+            },
+            quizModal: {
+                title: "Quick English Quiz",
+                content: `
+                    <p class="font-medium text-slate-800">Choose the correct past participle of 'write':</p>
+                    <div class="space-y-2 pt-2">
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                            <input type="radio" name="quickQ" class="text-brand-600"> <span>A) wrote</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                            <input type="radio" name="quickQ" class="text-brand-600"> <span>B) written</span>
+                        </label>
+                    </div>
+                    <button onclick="showToast('Correct! Written is the past participle.')" class="w-full mt-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 rounded-xl transition">Submit Answer</button>
+                `
+            }
+        };
+
+        function openModal(key) {
+            const modal = document.getElementById('genericModal');
+            document.getElementById('modalTitle').innerText = modalContents[key].title;
+            document.getElementById('modalBody').innerHTML = modalContents[key].content;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('genericModal').classList.add('hidden');
+        }
+
+        function playVideoMock(topic) {
+            showToast(`Streaming ${topic} instructional video lesson...`);
+        }
+
+        function shareLink() {
+            showToast("Lesson link copied to clipboard!");
+        }
+
+        function showToast(msg) {
+            const modal = document.getElementById('genericModal');
+            document.getElementById('modalTitle').innerText = "Notification";
+            document.getElementById('modalBody').innerHTML = `<p class="text-slate-700 py-3">${msg}</p>`;
+            modal.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>```
